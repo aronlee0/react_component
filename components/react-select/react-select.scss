@@ -1,0 +1,83 @@
+$borderColor:#DEDEDE;
+$timer: .2s;
+@mixin TransRotate ($x){
+    transform:rotate($x + deg);
+    -ms-transform:rotate($x + deg); 	/* IE 9 */
+    -moz-transform:rotate($x + deg); 	/* Firefox */
+    -webkit-transform:rotate($x + deg); /* Safari 和 Chrome */
+    -o-transform:rotate($x + deg); 	/* Opera */
+}
+.comp-select{
+    width:118px;
+    height: 34px;
+    border: 1px solid $borderColor;
+    position: relative;
+    padding-left: 12px;
+    padding-right: 12px;
+    .select-selected-sp{
+        line-height: 34px;
+        float: left;
+    }
+    &:hover{
+        .select-list{
+            visibility: visible;
+            height: auto;
+            transition: height $timer;
+        }
+        .icon-arrow-down{
+            @include TransRotate(180);
+        }
+    } 
+}
+.icon-arrow-down{
+    display: block;
+    margin-top: 8px;
+    width: 16px;
+    height: 16px;
+    float: right;
+    transition: transform $timer;
+}
+.select-list{
+    // display: none;
+    visibility: hidden;
+    position: absolute;
+    border-left: 1px solid $borderColor;
+    border-right: 1px solid $borderColor;
+    border-bottom: 1px solid $borderColor;
+    right: -1px;
+    left: -1px;
+    top: 35px;
+    overflow-y: auto;
+    height: 0;
+    max-height: 200px;
+}
+.select-list-item{
+    display: block;
+    height: 32px;
+    line-height: 32px;
+    padding-left: 12px;
+    border-bottom: 1px solid $borderColor;
+    &:hover{
+        background-color: #F7F7F7;
+    }
+    &.active{
+        color: #E84A01;
+    }
+}
+.select-bar{
+    width: 8px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    // background-color: #f1f1f1;
+}
+.scroll-bar{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 6px;
+    height: 80px;
+    border-radius: 3px;
+    background-color: #DEDEDE;
+}
