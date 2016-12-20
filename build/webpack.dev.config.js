@@ -10,7 +10,7 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin');
 const currentPath = process.cwd();
 
 var entry = {
-  react: ['react','react-dom'],
+  react: ['react','react-dom','react-router'],
   common: [
     './iconfont/iconfont.css',
     './index/index.js'
@@ -40,8 +40,6 @@ var config = {
         exclude: /node_modules/,
         loader: "jade"
       },
-      // => "style" and "css" loader is used for ".css" files
-      // Alternative syntax:
       {
           test: /\.css$/,
           loader: ExtractTextPlugin.extract("style", "css")
