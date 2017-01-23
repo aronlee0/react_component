@@ -7,15 +7,21 @@ var BellOnBundlerErrorPlugin = require('bell-on-bundler-error-plugin');
 var CleanWebpackPlugin = require('clean-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
+// var myloader = require('./Myloader');
+console.log(__dirname);
 const currentPath = process.cwd();
 
 var entry = {
-  react: ['react','react-dom','react-router'],
+  react: ['react','react-dom','react-router','redux'],
   common: [
+    'antd/dist/antd.less',
     './iconfont/iconfont.css',
     './index/index.js'
   ]
 }
+
+var routeComponentRegex = /views\/([^\/]+\/[^\/]+).js$/ 
+// var routeComponentRegex = /views\/([^\/]+\/)+[^\/]+.js$/ 
 
 var config = {
   watch: true,
@@ -67,8 +73,13 @@ var config = {
       },
       {
         test: /\.js$/,
-        exclude: /node_modules/,
+        exclude: (/node_modules/)|(/views\/([^\/]+\/[^\/]+).js$/),
         loader: 'babel'
+      },
+      {
+        test: routeComponentRegex,
+        // include: path.resolve(__dirname, 'src'),
+        loaders: [__dirname + '/Myloader/index.js?lazy', 'babel']
       },
       {
         test: /\.html$/,

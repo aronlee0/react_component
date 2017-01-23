@@ -1,10 +1,10 @@
 import React,{Component} from 'react';
 
 
-export default class PageDetail extends Component{
+export default class PageHome extends Component{
     render(){
         return(
-            <div>detail</div>
+            <div>Login</div>
         );
     }
 }

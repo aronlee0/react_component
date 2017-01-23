@@ -4,6 +4,7 @@
 var path = require("path");
 
 var alias = {
-  global: path.resolve("./static/js/global.js")
+  global: path.resolve("./static/js/global.js"),
+  React: 'react'
 }
 module.exports = alias;
