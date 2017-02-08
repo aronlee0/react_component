@@ -11,16 +11,29 @@ export default class SiderMenu extends Component{
         theme: 'dark',
         current: '1'
     }
+    
     handleClick(e) {
-        console.log('click ', e);
+        // console.log('click ', e);
+        let {key} = e;
         this.setState({
             current: e.key,
         });
+        switch (key) {
+            case "1":
+                location.href = "#/contract-list"
+                break;
+            case "2":
+                location.href = "#/house-list"
+                break;
+            default:
+                location.href = "#/"
+                break;
+        }
     }
     render(){
         return (
             <Menu
-            theme={this.state.theme}
+            // theme={this.state.theme}
             onClick={this.handleClick.bind(this)}
             style={{ width: 240 }}
             defaultOpenKeys={['sub1']}
@@ -28,8 +41,8 @@ export default class SiderMenu extends Component{
             mode="inline"
             >
                 <SubMenu key="sub1" title={<span><Icon type="mail" /><span>Navigation One</span></span>}>
-                    <Menu.Item key="1">Option 1</Menu.Item>
-                    <Menu.Item key="2">Option 2</Menu.Item>
+                    <Menu.Item key="1">contract-list</Menu.Item>
+                    <Menu.Item key="2">house-list</Menu.Item>
                     <Menu.Item key="3">Option 3</Menu.Item>
                     <Menu.Item key="4">Option 4</Menu.Item>
                 </SubMenu>

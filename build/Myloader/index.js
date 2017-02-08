@@ -17,6 +17,7 @@ module.exports.pitch = function(remainingRequest) {
 	} else {
 		var chunkNameParam = '';
 	}
+	console.log("chunkNameParam",chunkNameParam);
 	var result;
 	if(query.lazy) {
 		result = [
